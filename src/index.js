@@ -8,26 +8,31 @@ document.addEventListener("DOMContentLoaded", function() {
       .then(json => {
         for (const quote of json) {
 
-          //CREATE LIST ITEM AND APPEND
+          //CREATE LIST ITEM
           const quoteCard = document.createElement('li')
           quoteCard.className = 'quote-card'
 
+          //CREATE BLOCK FOR QUOTE AND APPEND
           const blockQuote = document.createElement('blockquote')
           blockQuote.className = 'blockquote'
           quoteCard.appendChild(blockQuote)
 
+          //CREATE QUOTE'S QUOTE
           const quoteValue = document.createElement('p')
           quoteValue.innerText = quote.quote
           blockQuote.appendChild(quoteValue)
 
+          //CREATE QUOTE'S AUTHOR
           const quoteAuthor = document.createElement('footer')
           quoteAuthor.className = 'blockquote-footer'
           quoteAuthor.innerText = quote.author
           blockQuote.appendChild(quoteAuthor)
 
+          //CREATE BREAK
           const quoteBreak = document.createElement('br')
           blockQuote.appendChild(quoteBreak)
 
+          //CREATE LIKES FOR QUOTE
           const quoteLikes = document.createElement('button')
           quoteLikes.className = 'btn-success'
           quoteLikes.innerText = 'Likes: '
@@ -42,6 +47,7 @@ document.addEventListener("DOMContentLoaded", function() {
           quoteLikes.appendChild(numberOfLikes)
           blockQuote.appendChild(quoteLikes)
 
+          //CREATE DESTROY FOR QUOTE
           const destroyQuote = document.createElement('button')
           destroyQuote.className = 'btn-danger'
           destroyQuote.innerText = 'Delete'
@@ -58,6 +64,7 @@ document.addEventListener("DOMContentLoaded", function() {
           })
           blockQuote.appendChild(destroyQuote)
 
+          //GET QUOTE LIST AND APPEND ALL QUOTES TO IT
           const quoteList = document.querySelector('#quote-list')
           quoteList.appendChild(quoteCard)
         }
@@ -65,6 +72,7 @@ document.addEventListener("DOMContentLoaded", function() {
   }
   fetchQuotes()
 
+  //ADD A QUOTE FROM FORM
   function addQuote() {
     const quoteForm = document.querySelector('#new-quote-form')
     quoteForm.addEventListener('submit',
